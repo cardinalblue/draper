@@ -73,8 +73,7 @@ module Draper
         prefix = respond_to?(:model_name) ? model_name : name
         decorator_name = "#{prefix}Decorator"
         decorator_name.constantize
-      rescue NameError => error
-        raise unless error.missing_name?(decorator_name)
+      rescue NameError
         if superclass.respond_to?(:decorator_class)
           superclass.decorator_class
         else
